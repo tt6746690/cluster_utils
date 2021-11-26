@@ -19,8 +19,9 @@ sudo scontrol update nodename=<nodename> state=idle
 
 #### Utilities
 
-- checks for driver version mismatch over nodes in cluster
-    - When system updates driver version, the machines yield `Failed to initialize NVML: Driver/library version mismatch` error when executing `nvidia-smi`. This problem can be fixed with a system reboot. Instead of logging in to every machine to check if version mismatch happens, run the following commands to find out which machine has this problem.
+**Check which node has nvml driver/library version mismatch error**
+
+After CUDA driver is udpated, a node may generate error message `Failed to initialize NVML: Driver/library version mismatch` when running `nvidia-smi`. This problem can be fixed with a system reboot, e.g., `sudo reboot`. Instead of logging in to every machine to check if version mismatch happens, run the following commands to find out which machine has this problem, and reboot only those machines.
 
 ```
 cd check_gpu_available
