@@ -4,14 +4,15 @@
 
 ```
 squeue -u wpq
-sinfo
+
 scancel -j <jobid>
 scancel -n <jobname>
-```
 
-##### Fix drained node
+sinfo
+sinfo --summarize
+sinfo --node <nodename> --long
 
-```
+# Fix drained node
 sinfo | grep drain
 sudo scontrol update nodename=<nodename> state=idle
 ```
@@ -29,5 +30,5 @@ sudo scontrol update nodename=<nodename> state=idle
     - not use any gpu resource
     - output {node: node_gpu_info} to a file for inspection
 - a script that, when given a list of python 1-liner commands, submit all jobs 
-    - a script that handles setting resource parameters, 
-    - 
+    - a script that handles setting resource parameters, conda env
+    - a list of python commands with potentially different arguments
