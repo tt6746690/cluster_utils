@@ -4,6 +4,7 @@
 
 ```
 squeue -u wpq
+squeue --format="%.18i %.9P %.30j %.8u %.8T %.10M %.9l %.6D %R"
 
 scancel -j <jobid>
 scancel -n <jobname>
@@ -19,14 +20,20 @@ sudo scontrol update nodename=<nodename> state=idle
 
 #### Utilities
 
-**Check which node has nvml driver/library version mismatch error**
+**Check which machine has nvml driver/library version mismatch error**
 
-After CUDA driver is udpated, a node may generate error message `Failed to initialize NVML: Driver/library version mismatch` when running `nvidia-smi`. This problem can be fixed with a system reboot, e.g., `sudo reboot`. Instead of logging in to every machine to check if version mismatch happens, run the following commands to find out which machine has this problem, and reboot only those machines.
+After CUDA driver is udpated, a machine may generate error message `Failed to initialize NVML: Driver/library version mismatch` when running `nvidia-smi`. This problem can be fixed with a system reboot, e.g., `sudo reboot`. Instead of logging in to every machine to check if version mismatch happens, run the following commands to find out which machine has this problem, and reboot only those machines.
 
 ```
 cd check_gpu_available
 make check_gpu
 ```
+
+**Sweep hyperparameters**
+
+
+
+
 
 
 #### Info 
